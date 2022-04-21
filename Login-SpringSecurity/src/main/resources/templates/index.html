@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8" />
+<title>Index Page</title>
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<!-- Trong trang chủ, mình sẽ show ra username và roles của người dùng. Để làm được điều này, ta cần phải tích hợp thêm phần mở rộng của Thymeleaf:
+	 Trong pom.xml, ta thêm dependency: 
+	 <dependency>
+    	<groupId>org.thymeleaf.extras</groupId>
+   		<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+	</dependency>
+-->
+<body>
+    Logged user: <span sec:authentication="name"></span> <br/> 
+    Roles: <span sec:authentication="principal.authorities"></span>
+    <form action="#" th:action="@{/logout}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
+
